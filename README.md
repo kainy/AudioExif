@@ -2,7 +2,7 @@ AudioExif.class.php
 用PHP进行音频文件头部信息的读取与写入
 目前只支持 WMA 和 MP3 两种格式, 只支持常用的几个头部信息
 
-----------
+
 
 ## 写入信息支持 ##
 
@@ -20,7 +20,7 @@ mp3还支持 Track (曲目编号写入)；
 
 对于 MP3 文件支持 ID3v1也支持ID3v2, 读取时优先 v2, 写入时总是会写入v1, 必要时写入v2。
 
-----------
+
 
 ## 用法说明  ##
 由于 wma 使用 Unicode 存取, 故还需要 mb_convert_encoding() 扩展返回数据及写入数据均为 ANSI 编码, 即存什么就显示什么 (中文_GB2312)
@@ -45,7 +45,7 @@ mp3还支持 Track (曲目编号写入)；
 
 `$AE->SetInfo($file, $pa);`
 
-----------
+
 
 ## 更新历史 ##
 
@@ -56,15 +56,16 @@ mp3还支持 Track (曲目编号写入)；
  - 1) 读取信息则统一返回指定的编码, 以便获得的信息, ID3v1则没有编码直接返回原字符串
  - 2) 写入时id3v2和wma转为ucs-2存储, id3v1均不作转换按iso-8859-1存入.
 
-----------
 
-## ID3v2 的编码规范 ## 
+
+## ID3v2编码规范 ##
+
 - $00 – ISO-8859-1 (ASCII).
 - $01 – UCS-2 in ID3v2.2 and ID3v2.3, UTF-16 encoded Unicode with BOM.(FE FF, big-endian, FF FE, little-endian)
 - $02 – UTF-16BE encoded Unicode without BOM in ID3v2.4 only.
 - $03 – UTF-8 encoded Unicode in ID3v2.4 only.
 
-----------
+
 
 ## 其他说明 ##
 
