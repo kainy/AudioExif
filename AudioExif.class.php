@@ -547,13 +547,13 @@ class _Mp3Exif extends _AudioExif
 	function set_info($file, $pa, $cs)
 	{
 		if (!$this->_file_init($file, true)) return false;
-		if ($this->_init_header())
-		{
-			// always save v1 info
-			$this->_set_v1_info($pa);			
-			// set v2 first if need
-			$this->_set_v2_info($pa, $cs);
-		}
+		$this->_init_header();
+
+		// always save v1 info
+		$this->_set_v1_info($pa);			
+		// set v2 first if need
+		$this->_set_v2_info($pa, $cs);
+
 		$this->_file_deinit();
 		return true;
 	}
